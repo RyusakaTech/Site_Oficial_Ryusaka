@@ -104,7 +104,7 @@ main img {
     gap: 40px; /* Espaçamento uniforme */
     padding: 80px 60px; /* Espaçamento interno */
     position: relative; /* Define posição relativa para o pseudo-elemento */
-    background-image: url('/Freelance/assets/servicos.png');
+    background-image: url('assets/servicos.png');
     background-size: cover;
     background-position: center;
     color: white;
@@ -238,7 +238,7 @@ figcaption:hover::after {
         rgba(0, 0, 0, 0.8), /* Ajuste a opacidade para 0.8 */
         rgba(0, 0, 0, 0.6) /* Ajuste a opacidade para 0.6 */
     ),
-    url('/Freelance/assets/aula.png') center/cover no-repeat;
+    url('assets/aula.png') center/cover no-repeat;
     min-height: 100vh;
     color: white;
     display: flex;
@@ -278,7 +278,7 @@ figcaption:hover::after {
 
 /* Estilo para a nova seção "Equipe" */
 #equipe {
-    background: url('/Freelance/assets/equipefundo.png') center/cover no-repeat; /* Fundo com imagem */
+    background: url('assets/equipefundo.png') center/cover no-repeat; /* Fundo com imagem */
     position: relative; /* Garante que os filhos se posicionem em relação ao container */
     padding: 60px; /* Espaçamento interno */
     color: white; /* Cor do texto */
