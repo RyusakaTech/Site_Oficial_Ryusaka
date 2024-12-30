@@ -10,9 +10,9 @@ let currentIndex = 0;
 
 // Array de imagens de fundo para os projetos
 const backgrounds = [
-    "url('/Freelance/assets/aula.png')",
-    "url('/Freelance/assets/Frame2.jpg')",
-    "url('/Freelance/assets/Frame3.png')"
+    "url('assets/aula.png')",
+    "url('assets/Frame2.jpg')",
+    "url('assets/Frame3.png')"
 ];
 
 // Função para mostrar o item atual e alterar o fundo
