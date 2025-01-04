@@ -70,22 +70,41 @@ menuLinks.forEach(link => {
     });
 });
 
-// Função para copiar e mostrar o pop-up
-document.getElementById("emailButton").addEventListener("click", function () {
-    const email = "exemplo@gmail.com";
+// Selecionar o botão de e-mail e elementos do pop-up
+const emailButton = document.getElementById("emailButton");
+const popup = document.getElementById("popup");
+const overlay = document.getElementById("overlay");
 
-    // Copiar o e-mail para a área de transferência
-    navigator.clipboard.writeText(email).then(() => {
-        // Exibir o pop-up
-        document.getElementById("popup").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }).catch(err => {
-        console.error("Erro ao copiar o texto: ", err);
-    });
-});
+// Função para copiar o e-mail para a área de transferência
+function copyEmailToClipboard() {
+    const email = "exemplo@gmail.com";
+    navigator.clipboard.writeText(email)
+        .then(() => {
+            showPopup();
+        })
+        .catch(err => {
+            console.error("Erro ao copiar o e-mail: ", err);
+        });
+}
+
+// Função para exibir o pop-up
+function showPopup() {
+    popup.style.display = "block";
+    overlay.style.display = "block";
+}
 
 // Função para fechar o pop-up
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
+    popup.style.display = "none";
+    overlay.style.display = "none";
+}
+
+// Adicionar evento de clique ao botão de e-mail
+if (emailButton) {
+    emailButton.addEventListener("click", copyEmailToClipboard);
+}
+
+// Garantir que o pop-up seja fechado corretamente
+if (overlay) {
+    overlay.addEventListener("click", closePopup);
 }
