@@ -71,7 +71,7 @@ menuLinks.forEach(link => {
 });
 
 // Função para copiar e mostrar o pop-up
-document.getElementById("emailButton").addEventListener("click", function() {
+document.getElementById("emailButton").addEventListener("click", function () {
     const email = "exemplo@gmail.com";
 
     // Copiar o e-mail para a área de transferência
@@ -89,4 +89,3 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("overlay").style.display = "none";
 }
-
