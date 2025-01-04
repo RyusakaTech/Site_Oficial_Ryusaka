@@ -70,21 +70,23 @@ menuLinks.forEach(link => {
     });
 });
 
+// Função para copiar e mostrar o pop-up
 document.getElementById("emailButton").addEventListener("click", function() {
-            const email = "exemplo@gmail.com";
+    const email = "exemplo@gmail.com";
 
-            // Copiar o e-mail para a área de transferência
-            navigator.clipboard.writeText(email).then(() => {
-                // Exibir o pop-up
-                document.getElementById("popup").style.display = "block";
-                document.getElementById("overlay").style.display = "block";
-            }).catch(err => {
-                console.error("Erro ao copiar o texto: ", err);
-            });
-        });
+    // Copiar o e-mail para a área de transferência
+    navigator.clipboard.writeText(email).then(() => {
+        // Exibir o pop-up
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }).catch(err => {
+        console.error("Erro ao copiar o texto: ", err);
+    });
+});
 
-        // Função para fechar o pop-up
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
+// Função para fechar o pop-up
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
