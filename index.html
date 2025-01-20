@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevFreelancer - Serviços de Desenvolvimento Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero">
+        <nav>
+            <div class="logo">DevFreelancer</div>
+            <div class="nav-links">
+                <a href="#servicos">Serviços</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>Transformando Ideias em Realidade</h1>
+            <p>Desenvolvimento web profissional e soluções digitais personalizadas</p>
+            <a href="#contato" class="cta-button">Iniciar Projeto</a>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="servicos">
+        <h2>Serviços</h2>
+        <figure>
+            <img src="assets/front.png" alt="Serviço de Front-end">
+            <figcaption>Front-end é a parte visual de um site ou aplicativo, que é onde os usuários interagem. O front-end é composto por elementos visuais, como botões, caixas de seleção, gráficos e mensagens de texto.</figcaption>
+            <p>Front-end</p>
+        </figure>
+        <figure>
+            <img src="assets/back.png" alt="Serviço de Back-end">
+            <figcaption>Back-end é a parte interna de uma aplicação, ou seja, o código que faz a aplicação funcionar, mas que não é visto pelo usuário</figcaption>
+            <p>Back-end</p>
+        </figure>
+        <figure>
+            <img src="assets/consultoria.png" alt="Serviço de Consultoria">
+            <figcaption>Consultoria é um serviço que analisa os processos administrativos de empresas de qualquer porte e oferece soluções para manter a gestão eficiente e otimizar a operação.</figcaption>
+            <p>Consultoria</p>
+        </figure>
+        <figure>
+            <img src="assets/desing.png" alt="Serviço de Design Gráfico">
+            <figcaption>Design gráfico é a prática de criar conteúdos visuais para comunicar mensagens, utilizando elementos como imagens, tipografia, cores, ilustrações e layout.</figcaption>
+            <p>Serviço de Design Gráfico</p>
+        </figure>
+        <figure>
+            <img src="assets/bancodedados.png" alt="Serviço de Banco de Dados">
+            <figcaption>Um banco de dados é um sistema de armazenamento de informações que permite a coleta, o armazenamento, a recuperação e a manipulação de dados de maneira estruturada e eficiente.</figcaption>
+            <p>Serviço de Banco de Dados</p>
+        </figure>
+        <figure>
+            <img src="assets/manuntencao.png" alt="Serviço de Manutenção">
+            <figcaption>Garantimos manutenção por 3 meses</figcaption>
+            <p>Serviço de Manutenção</p>
+        </figure>
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos</h2>
+        <div class="carousel">
+            <div class="carousel-items">
+                <div class="carousel-item">
+                    <div class="text-content">
+                        <h2>MindSpark</h2>
+                        <p>O MindSpark foi desenvolvido para capacitar estudantes...</p>
+                        <button onclick="window.location.href='https://github.com/RyusakaTech/Mindspark'">Explore Now</button>
+                    </div>
+                    <div class="image-content">
+                        <img src="assets/mindspark.png" alt="Imagem MindSpark">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="text-content">
+                        <h2>EverestGaming</h2>
+                        <p>O EverestGaming foi desenvolvido para ajudar os usuários...</p>
+                        <button onclick="window.location.href='https://github.com/RyusakaTech/Everastgaming'">Explore Now</button>
+                    </div>
+                    <div class="image-content">
+                        <img src="assets/everastgames.png" alt="Imagem EverestGaming">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="text-content">
+                        <h2>Sistema em Python</h2>
+                        <p>Desenvolvemos um sistema de reservas de laboratórios...</p>
+                        <button onclick="window.location.href='https://github.com/Excalibur757/LabConnect'">Explore Now</button>
+                    </div>
+                    <div class="image-content">
+                        <img src="assets/python.png" alt="Imagem Sistema em Python">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button id="prev">Anterior</button>
+                <button id="next">Próximo</button>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+
+    <!-- Contato -->
+    <section id="contato" class="contact">
+        <h2>Entre em Contato</h2>
+        <div class="contact-container">
+            <div class="social-links">
+                <a href="https://github.com"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:contato@exemplo.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows="4" required></textarea>
+                </div>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DevFreelancer. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

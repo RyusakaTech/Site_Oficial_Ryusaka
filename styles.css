@@ -1,0 +1,350 @@
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header e Navegação */
+.hero {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #93c5fd;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 5%;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #e5e7eb;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: white;
+    color: #2563eb;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #f3f4f6;
+}
+
+.scroll-indicator {
+    margin-top: 3rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+#servicos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 40px; /* Espaçamento uniforme */
+    padding: 80px 60px; /* Espaçamento interno */
+    position: relative; /* Define posição relativa para o pseudo-elemento */
+    background-image: url('assets/servicos.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+#servicos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.808); /* Ajuste o valor de "0.5" para aumentar a opacidade */
+    z-index: 1; /* Garante que fique abaixo do conteúdo */
+}
+
+#servicos h2 {
+    grid-column: 1 / -1; /* Título ocupa toda a largura */
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.servico-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: flex-start; /* Alinha o topo */
+    height: 200px; /* Altura fixa para todos os itens */
+}
+#servicos figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+
+.servico-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Garante que a imagem não distorça */
+    margin-bottom: 10px;
+}
+
+#servicos img:hover {
+    transform: scale(1.1); /* Efeito hover */
+}
+figcaption {
+    position: absolute; /* Posiciona a legenda em relação ao pai (figure) */
+    bottom: 0; /* Alinha o texto na parte inferior da imagem */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%) translateY(100%); /* Inicialmente fora da imagem */
+    background-color: rgba(0, 0, 0, 0.514); /* Fundo escuro semi-transparente */
+    color: #fff; /* Cor do texto */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    opacity: 0; /* Invisível por padrão */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 2; /* Garante que a legenda aparece acima da imagem */
+    white-space: normal; /* Permite quebra de linhas no texto */
+    width: 80%; /* Largura ajustada para centralizar abaixo da imagem */
+}
+#servicos figcaption {
+    font-size: 1rem; /* Tamanho da fonte */
+    text-align: center;
+}
+
+#servicos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.829); /* Camada escura */
+    z-index: 0; /* Mantém a camada atrás dos elementos */
+    display: none; /* Desabilita a camada escura */
+}
+
+/* Criação da mini tela (tooltip) */
+figcaption::after {
+    content: attr(data-resumo); /* Pega o conteúdo do atributo "data-resumo" */
+    position: absolute;
+    bottom: 120%; /* Coloca a tela acima do figcaption */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff; /* Cor do texto */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: normal;
+    width: 200px; /* Largura da mini tela */
+    text-align: center;
+    opacity: 0; /* Inicialmente invisível */
+    pointer-events: none; /* Não interfere no hover */
+    transition: opacity 0.3s ease-in-out; /* Suaviza a aparição */
+    z-index: 10; /* Garante que fique acima dos outros elementos */
+}
+
+#servicos figure:hover img {
+    transform: scale(1.1); /* Aplica zoom na imagem */
+    opacity: 0.8; /* Reduz a opacidade da imagem */
+}
+
+#servicos figure:hover p {
+    opacity: 0; /* Faz o parágrafo desaparecer suavemente */
+    transition: opacity 0.3s ease; /* Suaviza a transição */
+}
+
+#servicos figure:hover figcaption {
+    opacity: 1; /* Torna o texto visível */
+    transform: translateX(-50%) translateY(0); /* Move o texto para dentro da imagem */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Efeito de hover */
+figcaption:hover::after {
+    opacity: 1; /* Torna visível no hover */
+}
+
+
+#projetos {
+    position: relative;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.8), /* Ajuste a opacidade para 0.8 */
+        rgba(0, 0, 0, 0.6) /* Ajuste a opacidade para 0.6 */
+    ),
+    url('assets/aula.png') center/cover no-repeat;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: background 0.5s ease-in-out; /* Transição suave */
+}
+
+#projetos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.6;
+    z-index: 0;
+}
+.mindspark-title {
+    font-size: 4rem; /* Ajuste o tamanho da fonte aqui */
+    font-weight: bold; /* Opcional: torna o título mais destacado */
+}
+
+#projetos h2 {
+    font-size: 2rem; /* Aumenta o tamanho do título */
+    font-weight: bold; /* Deixa o título mais destacado */
+    text-align: center; /* Centraliza o título */
+    color: white; /* Cor do título */
+    margin-top: 30px; /* Espaço acima do título */
+    margin-bottom: 30px;
+    z-index: 1;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Seções */
+section {
+    padding: 5rem 5%;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
