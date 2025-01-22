@@ -238,8 +238,8 @@ figcaption:hover::after {
 #projetos {
     position: relative;
     background: linear-gradient(
-        rgba(0, 0, 0, 0.8), /* Ajuste a opacidade para 0.8 */
-        rgba(0, 0, 0, 0.6) /* Ajuste a opacidade para 0.6 */
+        rgba(0, 0, 0, 0.8), 
+        rgba(0, 0, 0, 0.6)
     ),
     url('assets/aula.png') center/cover no-repeat;
     min-height: 100vh;
@@ -248,53 +248,72 @@ figcaption:hover::after {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    transition: background 0.5s ease-in-out; /* Transição suave */
+    transition: background 0.5s ease-in-out;
+    overflow: hidden; /* Adicionado para evitar overflow */
 }
 
-#projetos::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    opacity: 0.6;
-    z-index: 0;
-}
-.mindspark-title {
-    font-size: 4rem; /* Ajuste o tamanho da fonte aqui */
-    font-weight: bold; /* Opcional: torna o título mais destacado */
+.carousel .text-content button {
+    background-color: #0078ff; /* Cor de fundo azul */
+    color: #fff; /* Cor do texto branco */
+    border: none; /* Remove borda padrão */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 12px 24px; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Cursor em formato de mão */
+    transition: all 0.3s ease; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
-#projetos h2 {
-    font-size: 2rem; /* Aumenta o tamanho do título */
-    font-weight: bold; /* Deixa o título mais destacado */
-    text-align: center; /* Centraliza o título */
-    color: white; /* Cor do título */
-    margin-top: 30px; /* Espaço acima do título */
-    margin-bottom: 30px;
-    z-index: 1;
+.carousel .text-content button:hover {
+    background-color: #005bb5; /* Cor mais escura no hover */
+    transform: translateY(-3px); /* Elevação ao passar o mouse */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra mais destacada no hover */
 }
+
+.carousel .text-content button:active {
+    transform: translateY(1px); /* Leve recuo ao clicar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Redução da sombra ao clicar */
+}
+
 
 .carousel {
-    display: flex;
-    overflow: hidden;
+    width: 100%; /* Garante que o carrossel ocupe toda a largura */
+    max-width: 1200px; /* Limita o tamanho máximo do carrossel */
+    margin: 0 auto; /* Centraliza o carrossel horizontalmente */
     position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .carousel-items {
     display: flex;
     transition: transform 0.5s ease;
+    width: 300%; /* Permite que os itens ocupem espaço suficiente para o deslocamento */
 }
 
 .carousel-item {
-    min-width: 100%;
+    min-width: 100%; /* Garante que cada item ocupe 100% da largura do carrossel */
     box-sizing: border-box;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Empilha o texto e a imagem */
+    justify-content: center;
     align-items: center;
+    text-align: center; /* Centraliza o conteúdo de texto */
+}
+
+.image-content img {
+    width: 100%;
+    max-width: 400px; /* Define um tamanho máximo para as imagens */
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px; /* Adiciona cantos arredondados às imagens */
+}
+
+.text-content {
+    margin-bottom: 20px;
 }
 
 .carousel-controls {
@@ -304,13 +323,20 @@ figcaption:hover::after {
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
+    z-index: 10;
 }
 
-button {
-    background-color: #fff;
+.carousel-controls button {
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
     padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-controls button:hover {
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* Seções */
@@ -324,27 +350,271 @@ section h2 {
     margin-bottom: 4rem;
 }
 
+/*equipe*/
+/* Equipe */
+#equipe {
+    background: linear-gradient(to bottom, #1a1a1a, #333);
+    color: #fff;
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+#equipe h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+}
+
+.equipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.equipe-container figure {
+    position: relative;
+    width: 280px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipe-container figure:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.equipe-container img {
+    width: 100%;
+    border-bottom: 3px solid #ff6b6b;
+}
+
+.overlay-text {
+    padding: 1rem;
+    color: #ddd;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.overlay-text br {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.btn-container {
+    margin-top: 1rem;
+}
+
+.linktree-btn {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.linktree-btn:hover {
+    background-color: #ff4a4a;
+    transform: scale(1.05);
+}
+
+.equipe-container a {
+    text-decoration: none;
+}
+
+.equipe-container figure:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .equipe-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .equipe-container figure {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    #equipe h2 {
+        font-size: 2rem;
+    }
+
+    .linktree-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+    }
+}
 
 
+/* Contato */
+#contato {
+    background: linear-gradient(to bottom, #1a1a1a, #333);
+    color: #fff;
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+#contato h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    color: #ff6b6b;
+}
+
+.contact-form {
+    background: #222;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+    font-size: 1rem;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #ff6b6b;
+}
+
+button[type="submit"] {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff4a4a;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #888;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p a {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #contato {
+        padding: 3rem 5%;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .social-links a {
+        font-size: 1.8rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.8rem 1.5rem;
+    }
+}
 
 
+@media (max-width: 768px) {
+    .carousel-item {
+        padding: 10px;
+    }
 
+    .text-content {
+        font-size: 0.9rem;
+    }
 
+    .image-content img {
+        max-width: 300px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #projetos h2 {
+        font-size: 1.5rem;
+    }
+}
