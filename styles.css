@@ -234,6 +234,17 @@ figcaption:hover::after {
     opacity: 1; /* Torna visível no hover */
 }
 
+#projetos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.6;
+    z-index: 0;
+}
 
 #projetos {
     position: relative;
@@ -250,6 +261,21 @@ figcaption:hover::after {
     justify-content: flex-start;
     transition: background 0.5s ease-in-out;
     overflow: hidden; /* Adicionado para evitar overflow */
+}
+
+.mindspark-title {
+    font-size: 4rem; /* Ajuste o tamanho da fonte aqui */
+    font-weight: bold; /* Opcional: torna o título mais destacado */
+}
+
+#projetos h2 {
+    font-size: 2rem; /* Aumenta o tamanho do título */
+    font-weight: bold; /* Deixa o título mais destacado */
+    text-align: center; /* Centraliza o título */
+    color: white; /* Cor do título */
+    margin-top: 30px; /* Espaço acima do título */
+    margin-bottom: 30px;
+    z-index: 1;
 }
 
 .carousel .text-content button {
@@ -276,44 +302,71 @@ figcaption:hover::after {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Redução da sombra ao clicar */
 }
 
-
 .carousel {
-    width: 100%; /* Garante que o carrossel ocupe toda a largura */
-    max-width: 1200px; /* Limita o tamanho máximo do carrossel */
-    margin: 0 auto; /* Centraliza o carrossel horizontalmente */
     position: relative;
+    width: 80%;
+    max-width: 1000px;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
+    background-color: rgba(30, 30, 30, 0.5); /* Fundo com opacidade de 50% */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Removida a propriedade 'opacity' */
 }
+
 
 .carousel-items {
     display: flex;
-    transition: transform 0.5s ease;
-    width: 300%; /* Permite que os itens ocupem espaço suficiente para o deslocamento */
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
-    min-width: 100%; /* Garante que cada item ocupe 100% da largura do carrossel */
-    box-sizing: border-box;
-    padding: 20px;
     display: flex;
-    flex-direction: column; /* Empilha o texto e a imagem */
+    align-items: center;
+    justify-content: space-between;
+    min-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-content {
+    width: 85%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center; /* Centraliza o conteúdo de texto */
 }
 
 .image-content img {
     width: 100%;
-    max-width: 400px; /* Define um tamanho máximo para as imagens */
-    height: auto;
-    margin: 20px 0;
-    border-radius: 10px; /* Adiciona cantos arredondados às imagens */
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .text-content {
+    width: 50%;
+}
+
+.text-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    font-size: 16px;
+    line-height: 1.5;
     margin-bottom: 20px;
+}
+
+.text-content button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 1px;
+
 }
 
 .carousel-controls {
@@ -327,17 +380,31 @@ figcaption:hover::after {
 }
 
 .carousel-controls button {
-    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: white;
+    font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 50%;
 }
 
-.carousel-controls button:hover {
-    background-color: rgba(255, 255, 255, 1);
+.text-content button:hover {
+    background-color: #ff4500;
 }
+/*
+#prev {
+    left: 1px;
+}
+*/
+#next {
+    right: 30px;
+}
+
 
 /* Seções */
 section {
@@ -350,90 +417,134 @@ section h2 {
     margin-bottom: 4rem;
 }
 
-/*equipe*/
-/* Equipe */
-#equipe {
-    background: linear-gradient(to bottom, #1a1a1a, #333);
-    color: #fff;
-    padding: 5rem 10%;
-    text-align: center;
-}
+/*Equipe*/
 
-#equipe h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+#equipe {
+    background: url('assets/equipefundo.png') center/cover no-repeat; /* Fundo com imagem */
+    position: relative; /* Garante que os filhos se posicionem em relação ao container */
+    padding: 50px; /* Espaçamento interno */
+    color: white; /* Cor do texto */
+    text-align: center; /* Alinha os textos */
+    height: 120vh; /* Faz o fundo ocupar 100% da altura da tela */
+    width: 100%; /* Certifica-se de que ocupe toda a largura */
 }
 
 .equipe-container {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 200px;
+    flex-wrap: wrap;
 }
 
 .equipe-container figure {
     position: relative;
-    width: 280px;
-    background: #222;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Esconde qualquer conteúdo fora do contêiner */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.equipe-container figure:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px; /* Aplica o arredondamento aos cantos */
+    width: 250px; /* Define uma largura consistente */
+    height: 340px; /* Altura ajustável */
 }
 
 .equipe-container img {
-    width: 100%;
-    border-bottom: 3px solid #ff6b6b;
+    width: 100%; /* Ajusta a imagem para preencher o contêiner */
+    height: 100%; /* Ajusta a altura para preencher o contêiner */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .overlay-text {
-    padding: 1rem;
-    color: #ddd;
-    font-size: 1rem;
-    line-height: 1.5;
+    position: absolute;
+    top: 50%; /* Alinha verticalmente ao centro */
+    left: 50%; /* Alinha horizontalmente ao centro */
+    transform: translate(-50%, -50%); /* Ajuste fino para o centro exato */
+    color: white; /* Cor do texto */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /* Esconde o texto por padrão */
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Evita interferência com o hover */
+    background: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
+    width: 100%; /* Garante que o texto ocupa toda a largura */
+    height: 100%; /* Garante que ocupa a altura total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.overlay-text br {
-    display: block;
-    margin-bottom: 0.5rem;
+.equipe-container figure:hover img {
+    transform: scale(1.2); /* Efeito de zoom ao passar o mouse */
+    opacity: 0.5; /* Reduz a opacidade para 50% */
 }
 
-.btn-container {
-    margin-top: 1rem;
+.equipe-container figure:hover .overlay-text {
+    opacity: 1; /* Torna o texto visível no hover */
 }
 
+
+#equipe h2 {
+    font-size: 3rem; /* Aumente o valor aqui */
+    color: white;
+    margin-bottom: 80px; /* Ajuste o espaçamento inferior se necessário */
+    margin-top: 10px;
+}
+
+/* Definir o estilo do botão normal */
 .linktree-btn {
-    background: #ff6b6b;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    text-decoration: none;
+    display: none; /* Inicialmente invisível */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Tamanho do botão */
+    font-size: 16px; /* Tamanho da fonte */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Mostrar cursor de clique */
+    position: absolute; /* Posicionamento absoluto para o botão */
+    bottom: 30px; /* Posição do botão em relação à figura (ajustado para cima) */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centralizar perfeitamente */
 }
 
+/* Quando o hover é ativado na figure, só o botão será afetado */
+.equipe-container figure:hover .linktree-btn {
+    display: block; /* Mostrar o botão */
+    transform: translateX(-50%) scale(1.1); /* Aumentar o botão sem afetar a imagem */
+    background-color: var(--cor-primaria); /* Cor de fundo no hover */
+}
+
+/* Definir o efeito de hover do botão */
 .linktree-btn:hover {
-    background-color: #ff4a4a;
-    transform: scale(1.05);
+    background-color:rgb(163, 176, 190); /* Cor de fundo quando o botão for hover */
 }
 
-.equipe-container a {
-    text-decoration: none;
+
+.project-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona um sombreamento, opcional */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de hover */
+    position: relative;
+    min-height: 100vh;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.equipe-container figure:last-child {
-    margin-bottom: 0;
+.project-images img:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente a escala ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta o sombreamento no hover */
 }
+
+.carrossel-item {
+    position: relative;
+    background-size: cover; /* Garante que o fundo cubra toda a área */
+    background-position: center; /* Centraliza a imagem de fundo */
+    border-radius: 10px; /* Bordas arredondadas para o container */
+    overflow: hidden; /* Garante que as imagens não "vazem" */
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -460,7 +571,7 @@ section h2 {
 
 /* Contato */
 #contato {
-    background: linear-gradient(to bottom, #1a1a1a, #333);
+    background: url('assets/contato.jpg') center/cover no-repeat; /* Fundo com imagem */
     color: #fff;
     padding: 5rem 10%;
     text-align: center;
