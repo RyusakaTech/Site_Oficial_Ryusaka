@@ -25,11 +25,17 @@ body {
 }
 
 nav {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
 }
 
 .logo {
@@ -55,7 +61,7 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem 5%;
+    padding: 8rem 5%; 
 }
 
 .hero-content h1 {
@@ -106,39 +112,52 @@ nav {
     grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
     gap: 40px; /* Espaçamento uniforme */
     padding: 80px 60px; /* Espaçamento interno */
-    position: relative; /* Define posição relativa para o pseudo-elemento */
-    background-image: url('assets/servicos.png');
+    position: relative; /* Necessário para o pseudo-elemento */
+    background-image: url('assets/BackgroundServiço.jpg'); /* Imagem de fundo */
     background-size: cover;
     background-position: center;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
+    overflow: hidden; /* Garante que conteúdo extra não vaze */
 }
 
 #servicos::before {
-    content: '';
-    position: absolute;
+    content: ""; 
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.808); /* Ajuste o valor de "0.5" para aumentar a opacidade */
-    z-index: 1; /* Garante que fique abaixo do conteúdo */
+    background: rgba(0, 0, 0, 0.815); /* Overlay escuro */
+    z-index: 1; /* Fica abaixo do conteúdo */
+
 }
 
+#servicos h2, .servico-item {
+    position: relative;
+    z-index: -1; /* Garante que o conteúdo fique acima do overlay */
+}
+
+
 #servicos h2 {
-    grid-column: 1 / -1; /* Título ocupa toda a largura */
+    grid-column: 1 / -1; /* Ocupa toda a largura da grid */
     font-size: 3rem;
     text-align: center;
     margin-bottom: 50px;
+    z-index: 2; /* Fica acima do overlay */
+    position: relative;
 }
 
 .servico-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: flex-start; /* Alinha o topo */
-    height: 200px; /* Altura fixa para todos os itens */
+    align-items: center;
+    justify-content: flex-start;
+    height: 200px;
+    z-index: 2; /* Fica acima do overlay */
+    position: relative;
 }
+
 #servicos figure {
     margin: 0;
     display: flex;
@@ -152,7 +171,7 @@ nav {
 .servico-item img {
     width: 120px;
     height: 120px;
-    object-fit: contain; /* Garante que a imagem não distorça */
+    object-fit: contain;
     margin-bottom: 10px;
 }
 
@@ -179,18 +198,6 @@ figcaption {
 #servicos figcaption {
     font-size: 1rem; /* Tamanho da fonte */
     text-align: center;
-}
-
-#servicos::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.829); /* Camada escura */
-    z-index: 0; /* Mantém a camada atrás dos elementos */
-    display: none; /* Desabilita a camada escura */
 }
 
 /* Criação da mini tela (tooltip) */
@@ -269,7 +276,7 @@ figcaption:hover::after {
 }
 
 #projetos h2 {
-    font-size: 2rem; /* Aumenta o tamanho do título */
+    font-size: 3rem; /* Aumenta o tamanho do título */
     font-weight: bold; /* Deixa o título mais destacado */
     text-align: center; /* Centraliza o título */
     color: white; /* Cor do título */
@@ -314,10 +321,10 @@ figcaption:hover::after {
     /* Removida a propriedade 'opacity' */
 }
 
-
 .carousel-items {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    
 }
 
 .carousel-item {
@@ -325,7 +332,7 @@ figcaption:hover::after {
     align-items: center;
     justify-content: space-between;
     min-width: 100%;
-    padding: 20px;
+    padding: 60px;
     box-sizing: border-box;
 }
 
@@ -420,13 +427,17 @@ section h2 {
 /*Equipe*/
 
 #equipe {
-    background: url('assets/equipefundo.png') center/cover no-repeat; /* Fundo com imagem */
+    background: url('assets/BackgroundEquipe.jpg') center/cover no-repeat; /* Fundo com imagem */
     position: relative; /* Garante que os filhos se posicionem em relação ao container */
     padding: 50px; /* Espaçamento interno */
     color: white; /* Cor do texto */
     text-align: center; /* Alinha os textos */
-    height: 120vh; /* Faz o fundo ocupar 100% da altura da tela */
+    height: 80vh; /* Faz o fundo ocupar 100% da altura da tela */
     width: 100%; /* Certifica-se de que ocupe toda a largura */
+    z-index: 1;
+    /* Adiciona um overlay escuro */
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade para controlar o escurecimento */
 }
 
 .equipe-container {
@@ -494,26 +505,30 @@ section h2 {
     display: none; /* Inicialmente invisível */
     color: white; /* Cor do texto */
     border: none; /* Sem borda */
-    padding: 10px 20px; /* Tamanho do botão */
-    font-size: 16px; /* Tamanho da fonte */
-    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Tamanho confortável do botão */
+    font-size: 12px; /* Tamanho da fonte */
+    font-weight: bold; /* Deixar o texto mais marcante */
+    border-radius: 8px; /* Bordas mais arredondadas */
     cursor: pointer; /* Mostrar cursor de clique */
-    position: absolute; /* Posicionamento absoluto para o botão */
-    bottom: 30px; /* Posição do botão em relação à figura (ajustado para cima) */
+    position: absolute; /* Posicionamento absoluto */
+    bottom: 20px; /* Margem inferior ajustada */
     left: 50%; /* Centraliza horizontalmente */
     transform: translateX(-50%); /* Ajuste para centralizar perfeitamente */
+    background-color: var(--cor-primaria, #007BFF); /* Cor principal com fallback */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza a transição */
 }
+
 
 /* Quando o hover é ativado na figure, só o botão será afetado */
 .equipe-container figure:hover .linktree-btn {
     display: block; /* Mostrar o botão */
-    transform: translateX(-50%) scale(1.1); /* Aumentar o botão sem afetar a imagem */
-    background-color: var(--cor-primaria); /* Cor de fundo no hover */
+    transform: translateX(-50%) scale(1.1); /* Aumentar levemente o botão */
 }
 
-/* Definir o efeito de hover do botão */
+/* Efeito de hover no botão */
 .linktree-btn:hover {
-    background-color:rgb(163, 176, 190); /* Cor de fundo quando o botão for hover */
+    background-color: rgb(1, 59, 121); /* Cor de fundo no hover */
+    transform: translateX(-50%) scale(1.2); /* Ampliação maior no hover */
 }
 
 
