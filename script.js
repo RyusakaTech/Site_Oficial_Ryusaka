@@ -48,21 +48,20 @@ nextButton.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const emailjsPublicKey = process.env.EMAILJS_PUBLIC_KEY; // Variável de ambiente
-    const serviceId = process.env.EMAILJS_SERVICE_ID; // Armazenando o ID do serviço
-    const templateId = process.env.EMAILJS_TEMPLATE_ID; // Armazenando o ID do template
-    emailjs.init(emailjsPublicKey); // Inicializa o EmailJS
+    emailjs.init(window.EMAILJS_PUBLIC_KEY); // Usando a chave pública definida no HTML
 
     document.querySelector(".contact-form").addEventListener("submit", function (event) {
         event.preventDefault();
 
         console.log("EmailJS carregado?", emailjs);
 
+        // Captura os valores do formulário
         const nome = document.getElementById("nome").value;
         const email = document.getElementById("email").value;
         const mensagem = document.getElementById("mensagem").value;
         const statusMsg = document.getElementById("status-msg");
 
+        // Cria um objeto com os dados do formulário (corrigindo os nomes das chaves)
         const templateParams = {
             from_name: nome,
             reply_to: email,
@@ -72,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Enviando com os seguintes parâmetros:", templateParams);
 
-        emailjs.send(serviceId, templateId, templateParams)
+        // Envia o e-mail via EmailJS
+        emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, templateParams) // Usando os valores das variáveis
             .then(response => {
                 statusMsg.textContent = "Mensagem enviada com sucesso!";
                 statusMsg.style.color = "green";
