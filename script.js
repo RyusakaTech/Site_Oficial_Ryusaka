@@ -1,3 +1,7 @@
+if (typeof emailjs === "undefined") {
+    var emailjs = window.emailjs;
+}
+
 const carouselItems = document.querySelector('.carousel-items'); // Container dos itens do carrossel
 const items = document.querySelectorAll('.carousel-item'); // Todos os itens do carrossel
 const prevButton = document.getElementById('prev'); // Botão "Anterior"
@@ -43,68 +47,48 @@ nextButton.addEventListener('click', () => {
     showItem(currentIndex);
 });
 
-// Alterna a exibição do menu
-menuButton.addEventListener('click', () => {
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'flex';
-    } else {
-        menu.style.display = 'none';
-    }
-});
+document.addEventListener("DOMContentLoaded", function () {
+    // Inicializa o EmailJS com a chave pública, a qual deve ser configurada como variável de ambiente
+    emailjs.init(process.env.EMAILJS_PUBLIC_KEY); // Agora usando a variável de ambiente
 
-// Navegação suave ao clicar nos links
-const menuLinks = document.querySelectorAll('#menu a');
-menuLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault(); // Previne o comportamento padrão
+    document.querySelector(".contact-form").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        const targetId = link.getAttribute('href').substring(1); // Obtém o ID sem o '#'
-        const targetSection = document.getElementById(targetId);
+        console.log("EmailJS carregado?", emailjs);
 
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' }); // Navegação suave
-        }
+        // Captura os valores do formulário
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const mensagem = document.getElementById("mensagem").value;
+        const statusMsg = document.getElementById("status-msg");
 
-        // Oculta o menu após a navegação
-        menu.style.display = 'none';
+        // Cria um objeto com os dados do formulário (corrigindo os nomes das chaves)
+        const templateParams = {
+            from_name: nome,
+            reply_to: email,
+            message: mensagem,
+            user_email: email
+        };
+
+        console.log("Enviando com os seguintes parâmetros:", templateParams);
+
+        // Envia o e-mail via EmailJS usando as variáveis de ambiente para o service_id e template_id
+        emailjs.send(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE_ID, templateParams)
+            .then(response => {
+                statusMsg.textContent = "Mensagem enviada com sucesso!";
+                statusMsg.style.color = "green";
+                statusMsg.style.display = "block";
+
+                document.querySelector(".contact-form").reset();
+            })
+            .catch(error => {
+                statusMsg.textContent = "Erro ao enviar mensagem. Tente novamente.";
+                statusMsg.style.color = "red";
+                statusMsg.style.display = "block";
+
+                console.error("Erro:", error);
+            });
     });
 });
 
-// Selecionar o botão de e-mail e elementos do pop-up
-const emailButton = document.getElementById("emailButton");
-const popup = document.getElementById("popup");
-const overlay = document.getElementById("overlay");
 
-// Função para copiar o e-mail para a área de transferência
-function copyEmailToClipboard() {
-    const email = "exemplo@gmail.com";
-    navigator.clipboard.writeText(email)
-        .then(() => {
-            showPopup();
-        })
-        .catch(err => {
-            console.error("Erro ao copiar o e-mail: ", err);
-        });
-}
-
-// Função para exibir o pop-up
-function showPopup() {
-    popup.style.display = "block";
-    overlay.style.display = "block";
-}
-
-// Função para fechar o pop-up
-function closePopup() {
-    popup.style.display = "none";
-    overlay.style.display = "none";
-}
-
-// Adicionar evento de clique ao botão de e-mail
-if (emailButton) {
-    emailButton.addEventListener("click", copyEmailToClipboard);
-}
-
-// Garantir que o pop-up seja fechado corretamente
-if (overlay) {
-    overlay.addEventListener("click", closePopup);
-}
