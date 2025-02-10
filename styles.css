@@ -22,20 +22,21 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 2rem 5%;
 }
 
 nav {
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -43,10 +44,16 @@ nav {
     font-weight: bold;
 }
 
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .nav-links a {
     color: white;
     text-decoration: none;
-    margin-left: 2rem;
+    margin-left: 0;
     transition: color 0.3s;
 }
 
@@ -61,17 +68,17 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 8rem 5%; 
+    padding: 8rem 5%;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     max-width: 800px;
 }
 
 .hero-content p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
     color: #e5e7eb;
 }
@@ -80,7 +87,7 @@ nav {
     display: inline-block;
     background-color: white;
     color: #2563eb;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 9999px;
     text-decoration: none;
     font-weight: 600;
@@ -107,44 +114,41 @@ nav {
         transform: translateY(-15px);
     }
 }
+
+/* Seção de Serviços */
 #servicos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
-    gap: 40px; /* Espaçamento uniforme */
-    padding: 80px 60px; /* Espaçamento interno */
-    position: relative; /* Necessário para o pseudo-elemento */
-    background-image: url('assets/BackgroundServiço.jpg'); /* Imagem de fundo */
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(2, 1fr); /* 2 fileiras */
+    gap: 20px; /* Espaçamento entre os itens */
+    padding: 40px 20px;
+    position: relative;
+    background-image: url('assets/BackgroundServiço.jpg');
     background-size: cover;
     background-position: center;
     color: rgb(255, 255, 255);
     text-align: center;
-    overflow: hidden; /* Garante que conteúdo extra não vaze */
+    overflow: hidden;
+    padding-bottom: 200px;
 }
 
 #servicos::before {
-    content: ""; 
-    position: absolute; 
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.815); /* Overlay escuro */
-    z-index: 1; /* Fica abaixo do conteúdo */
-
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 1;
 }
-
-#servicos h2, .servico-item {
-    position: relative;
-    z-index: -1; /* Garante que o conteúdo fique acima do overlay */
-}
-
 
 #servicos h2 {
-    grid-column: 1 / -1; /* Ocupa toda a largura da grid */
-    font-size: 3rem;
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    font-size: 2.5rem;
     text-align: center;
     margin-bottom: 50px;
-    z-index: 2; /* Fica acima do overlay */
+    z-index: 2;
     position: relative;
 }
 
@@ -154,7 +158,7 @@ nav {
     align-items: center;
     justify-content: flex-start;
     height: 200px;
-    z-index: 2; /* Fica acima do overlay */
+    z-index: 2;
     position: relative;
 }
 
@@ -167,99 +171,83 @@ nav {
     z-index: 1;
 }
 
-
 .servico-item img {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     margin-bottom: 10px;
 }
 
 #servicos img:hover {
-    transform: scale(1.1); /* Efeito hover */
+    transform: scale(1.1);
 }
+
 figcaption {
-    position: absolute; /* Posiciona a legenda em relação ao pai (figure) */
-    bottom: 0; /* Alinha o texto na parte inferior da imagem */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%) translateY(100%); /* Inicialmente fora da imagem */
-    background-color: rgba(0, 0, 0, 0.514); /* Fundo escuro semi-transparente */
-    color: #fff; /* Cor do texto */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background-color: rgba(0, 0, 0, 0.514);
+    color: #fff;
     padding: 10px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
-    opacity: 0; /* Invisível por padrão */
+    opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 2; /* Garante que a legenda aparece acima da imagem */
-    white-space: normal; /* Permite quebra de linhas no texto */
-    width: 80%; /* Largura ajustada para centralizar abaixo da imagem */
+    z-index: 2;
+    white-space: normal;
+    width: 80%;
 }
+
 #servicos figcaption {
-    font-size: 1rem; /* Tamanho da fonte */
+    font-size: 0.9rem;
     text-align: center;
 }
 
-/* Criação da mini tela (tooltip) */
 figcaption::after {
-    content: attr(data-resumo); /* Pega o conteúdo do atributo "data-resumo" */
+    content: attr(data-resumo);
     position: absolute;
-    bottom: 120%; /* Coloca a tela acima do figcaption */
+    bottom: 120%;
     left: 50%;
     transform: translateX(-50%);
-    color: #fff; /* Cor do texto */
+    color: #fff;
     padding: 10px;
     border-radius: 5px;
     font-size: 0.9rem;
     white-space: normal;
-    width: 200px; /* Largura da mini tela */
+    width: 200px;
     text-align: center;
-    opacity: 0; /* Inicialmente invisível */
-    pointer-events: none; /* Não interfere no hover */
-    transition: opacity 0.3s ease-in-out; /* Suaviza a aparição */
-    z-index: 10; /* Garante que fique acima dos outros elementos */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
 }
 
 #servicos figure:hover img {
-    transform: scale(1.1); /* Aplica zoom na imagem */
-    opacity: 0.8; /* Reduz a opacidade da imagem */
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 #servicos figure:hover p {
-    opacity: 0; /* Faz o parágrafo desaparecer suavemente */
-    transition: opacity 0.3s ease; /* Suaviza a transição */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 #servicos figure:hover figcaption {
-    opacity: 1; /* Torna o texto visível */
-    transform: translateX(-50%) translateY(0); /* Move o texto para dentro da imagem */
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
     font-family: 'Poppins', sans-serif;
 }
 
-/* Efeito de hover */
 figcaption:hover::after {
-    opacity: 1; /* Torna visível no hover */
+    opacity: 1;
 }
 
-#projetos::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    opacity: 0.6;
-    z-index: 0;
-}
-
+/* Seção de Projetos */
 #projetos {
     position: relative;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.8), 
-        rgba(0, 0, 0, 0.6)
-    ),
-    url('assets/aula.png') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('assets/aula.png') center/cover no-repeat;
     min-height: 100vh;
     color: white;
     display: flex;
@@ -267,91 +255,53 @@ figcaption:hover::after {
     align-items: center;
     justify-content: flex-start;
     transition: background 0.5s ease-in-out;
-    overflow: hidden; /* Adicionado para evitar overflow */
-}
-
-.mindspark-title {
-    font-size: 4rem; /* Ajuste o tamanho da fonte aqui */
-    font-weight: bold; /* Opcional: torna o título mais destacado */
+    overflow: hidden;
+    padding: 40px 20px;
 }
 
 #projetos h2 {
-    font-size: 3rem; /* Aumenta o tamanho do título */
-    font-weight: bold; /* Deixa o título mais destacado */
-    text-align: center; /* Centraliza o título */
-    color: white; /* Cor do título */
-    margin-top: 30px; /* Espaço acima do título */
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
     margin-bottom: 30px;
     z-index: 1;
-}
-
-.carousel .text-content button {
-    background-color: #0078ff; /* Cor de fundo azul */
-    color: #fff; /* Cor do texto branco */
-    border: none; /* Remove borda padrão */
-    border-radius: 8px; /* Bordas arredondadas */
-    padding: 12px 24px; /* Espaçamento interno */
-    font-size: 1rem; /* Tamanho do texto */
-    font-weight: bold; /* Texto em negrito */
-    cursor: pointer; /* Cursor em formato de mão */
-    transition: all 0.3s ease; /* Transição suave */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
-.carousel .text-content button:hover {
-    background-color: #005bb5; /* Cor mais escura no hover */
-    transform: translateY(-3px); /* Elevação ao passar o mouse */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra mais destacada no hover */
-}
-
-.carousel .text-content button:active {
-    transform: translateY(1px); /* Leve recuo ao clicar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Redução da sombra ao clicar */
 }
 
 .carousel {
     position: relative;
     width: 80%;
     max-width: 1000px;
-    overflow: hidden;
-    background-color: rgba(30, 30, 30, 0.5); /* Fundo com opacidade de 50% */
+    overflow: hidden; /* Oculta conteúdo fora da área visível */
+    background-color: rgba(30, 30, 30, 0.5);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    /* Removida a propriedade 'opacity' */
+    margin: 0 auto; /* Centraliza o carrossel */
 }
 
 .carousel-items {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    
+    width: 100%; /* Garante que o contêiner ocupe toda a largura */
 }
 
 .carousel-item {
+    min-width: 100%; /* Cada item ocupa 100% da largura do contêiner */
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 100%;
-    padding: 60px;
-    box-sizing: border-box;
-}
-
-.image-content {
-    width: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-content img {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
 }
 
 .text-content {
-    width: 50%;
+    width: 50%; /* Largura do texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o texto à esquerda */
 }
 
 .text-content h2 {
@@ -372,8 +322,26 @@ figcaption:hover::after {
     color: white;
     cursor: pointer;
     border-radius: 5px;
-    margin-left: 1px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
 
+.text-content button:hover {
+    background-color: #ff4500;
+}
+
+.image-content {
+    width: 45%; /* Largura da imagem */
+    display: flex;
+    justify-content: flex-end; /* Alinha a imagem à direita */
+    align-items: center;
+}
+
+.image-content img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-controls {
@@ -400,200 +368,124 @@ figcaption:hover::after {
     border-radius: 50%;
 }
 
-.text-content button:hover {
-    background-color: #ff4500;
-}
-/*
 #prev {
-    left: 1px;
+    left: -10px;
 }
-*/
+
 #next {
     right: 30px;
 }
 
-
-/* Seções */
-section {
-    padding: 5rem 5%;
-}
-
-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 4rem;
-}
-
-/*Equipe*/
-
+/* Seção de Equipe */
 #equipe {
-    background: url('assets/BackgroundEquipe.jpg') center/cover no-repeat; /* Fundo com imagem */
-    position: relative; /* Garante que os filhos se posicionem em relação ao container */
-    padding: 50px; /* Espaçamento interno */
-    color: white; /* Cor do texto */
-    text-align: center; /* Alinha os textos */
-    height: 80vh; /* Faz o fundo ocupar 100% da altura da tela */
-    width: 100%; /* Certifica-se de que ocupe toda a largura */
+    background: url('assets/BackgroundEquipe.jpg') center/cover no-repeat;
+    position: relative;
+    padding: 50px;
+    color: white;
+    text-align: center;
+    height: auto;
+    width: 100%;
     z-index: 1;
-    /* Adiciona um overlay escuro */
     background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade para controlar o escurecimento */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .equipe-container {
     position: relative;
     display: flex;
     justify-content: center;
-    gap: 200px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .equipe-container figure {
     position: relative;
-    overflow: hidden; /* Esconde qualquer conteúdo fora do contêiner */
+    overflow: hidden;
     text-align: center;
-    border-radius: 20px; /* Aplica o arredondamento aos cantos */
-    width: 250px; /* Define uma largura consistente */
-    height: 340px; /* Altura ajustável */
+    border-radius: 20px;
+    width: 150px;
+    height: 200px;
 }
 
 .equipe-container img {
-    width: 100%; /* Ajusta a imagem para preencher o contêiner */
-    height: 100%; /* Ajusta a altura para preencher o contêiner */
+    width: 100%;
+    height: 100%;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .overlay-text {
     position: absolute;
-    top: 50%; /* Alinha verticalmente ao centro */
-    left: 50%; /* Alinha horizontalmente ao centro */
-    transform: translate(-50%, -50%); /* Ajuste fino para o centro exato */
-    color: white; /* Cor do texto */
-    font-size: 1.1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
-    opacity: 0; /* Esconde o texto por padrão */
+    opacity: 0;
     transition: opacity 0.5s ease;
-    pointer-events: none; /* Evita interferência com o hover */
-    background: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
-    width: 100%; /* Garante que o texto ocupa toda a largura */
-    height: 100%; /* Garante que ocupa a altura total */
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .equipe-container figure:hover img {
-    transform: scale(1.2); /* Efeito de zoom ao passar o mouse */
-    opacity: 0.5; /* Reduz a opacidade para 50% */
+    transform: scale(1.2);
+    opacity: 0.5;
 }
 
 .equipe-container figure:hover .overlay-text {
-    opacity: 1; /* Torna o texto visível no hover */
+    opacity: 1;
 }
 
-
 #equipe h2 {
-    font-size: 3rem; /* Aumente o valor aqui */
+    font-size: 2rem;
     color: white;
-    margin-bottom: 80px; /* Ajuste o espaçamento inferior se necessário */
+    margin-bottom: 40px;
     margin-top: 10px;
 }
 
-/* Definir o estilo do botão normal */
 .linktree-btn {
-    display: none; /* Inicialmente invisível */
-    color: white; /* Cor do texto */
-    border: none; /* Sem borda */
-    padding: 10px 20px; /* Tamanho confortável do botão */
-    font-size: 12px; /* Tamanho da fonte */
-    font-weight: bold; /* Deixar o texto mais marcante */
-    border-radius: 8px; /* Bordas mais arredondadas */
-    cursor: pointer; /* Mostrar cursor de clique */
-    position: absolute; /* Posicionamento absoluto */
-    bottom: 20px; /* Margem inferior ajustada */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%); /* Ajuste para centralizar perfeitamente */
-    background-color: var(--cor-primaria, #007BFF); /* Cor principal com fallback */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza a transição */
-}
-
-
-/* Quando o hover é ativado na figure, só o botão será afetado */
-.equipe-container figure:hover .linktree-btn {
-    display: block; /* Mostrar o botão */
-    transform: translateX(-50%) scale(1.1); /* Aumentar levemente o botão */
-}
-
-/* Efeito de hover no botão */
-.linktree-btn:hover {
-    background-color: rgb(1, 59, 121); /* Cor de fundo no hover */
-    transform: translateX(-50%) scale(1.2); /* Ampliação maior no hover */
-}
-
-
-.project-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: flex;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona um sombreamento, opcional */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de hover */
-    position: relative;
-    min-height: 100vh;
+    display: none;
     color: white;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007BFF;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.project-images img:hover {
-    transform: scale(1.05); /* Aumenta ligeiramente a escala ao passar o mouse */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta o sombreamento no hover */
+.equipe-container figure:hover .linktree-btn {
+    display: block;
+    transform: translateX(-50%) scale(1.1);
 }
 
-.carrossel-item {
-    position: relative;
-    background-size: cover; /* Garante que o fundo cubra toda a área */
-    background-position: center; /* Centraliza a imagem de fundo */
-    border-radius: 10px; /* Bordas arredondadas para o container */
-    overflow: hidden; /* Garante que as imagens não "vazem" */
+.linktree-btn:hover {
+    background-color: rgb(1, 59, 121);
+    transform: translateX(-50%) scale(1.2);
 }
 
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .equipe-container {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .equipe-container figure {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    #equipe h2 {
-        font-size: 2rem;
-    }
-
-    .linktree-btn {
-        padding: 0.8rem 1rem;
-        font-size: 0.85rem;
-    }
-}
-
-
-/* Contato */
+/* Seção de Contato */
 #contato {
-    background: url('assets/contato.jpg') center/cover no-repeat; /* Fundo com imagem */
+    background: url('assets/contato.jpg') center/cover no-repeat;
     color: #fff;
     padding: 5rem 10%;
     text-align: center;
 }
 
 #contato h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
     color: #f0f0f0;
 }
@@ -702,45 +594,85 @@ footer p a:hover {
     text-decoration: underline;
 }
 
-/* Responsividade */
+/* Media Queries para Responsividade */
 @media (max-width: 768px) {
-    #contato {
-        padding: 3rem 5%;
+    .hero-content h1 {
+        font-size: 2rem;
     }
 
-    .contact-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .social-links a {
-        font-size: 1.8rem;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    button[type="submit"] {
-        padding: 0.8rem 1.5rem;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .carousel-item {
-        padding: 10px;
-    }
-
-    .text-content {
+    .hero-content p {
         font-size: 0.9rem;
     }
 
-    .image-content img {
-        max-width: 300px;
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+    }
+
+    #servicos {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 40px 20px;
+    }
+
+    #servicos h2 {
+        font-size: 1.5rem;
+    }
+
+    .servico-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    figcaption {
+        font-size: 0.8rem;
     }
 
     #projetos h2 {
         font-size: 1.5rem;
+    }
+    
+    .carousel {
+        min-height: 500px;
+        position: relative;
+    }
+    .carousel-item {
+        padding: 30px;
+    }
+
+    .text-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .text-content p {
+        font-size: 0.8rem;
+    }
+
+    #equipe h2 {
+        font-size: 1.5rem;
+    }
+
+    .equipe-container figure {
+        width: 120px;
+        height: 160px;
+    }
+
+    .overlay-text {
+        font-size: 0.8rem;
+    }
+
+    #contato h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.5rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.5rem 1.2rem;
     }
 }
