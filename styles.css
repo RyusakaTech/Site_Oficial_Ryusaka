@@ -135,7 +135,7 @@ nav {
 
 #servicos h2, .servico-item {
     position: relative;
-    z-index: -1; /* Garante que o conteúdo fique acima do overlay */
+    z-index: 2; /* Mantém o conteúdo acima do overlay */
 }
 
 
@@ -702,45 +702,61 @@ footer p a:hover {
     text-decoration: underline;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    #contato {
-        padding: 3rem 5%;
+/* Responsividade para telas menores */
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px;
     }
-
-    .contact-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .social-links a {
-        font-size: 1.8rem;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    button[type="submit"] {
-        padding: 0.8rem 1.5rem;
+    .container {
+        width: 90%;
+        margin: auto;
     }
 }
 
-
 @media (max-width: 768px) {
-    .carousel-item {
+    .projeto-card {
+        width: 90%;  /* Ajusta a largura do card */
+        max-width: 350px; /* Limita o tamanho */
+        padding: 20px;
+    }
+
+    .projeto-card h2 {
+        font-size: 1.5em; /* Reduz o tamanho do título */
+    }
+
+    .projeto-card p {
+        font-size: 1em; /* Mantém a leitura confortável */
+    }
+
+    .projeto-card img {
+        max-width: 100%; /* Ajusta a imagem dentro do card */
+        height: auto;
+        display: block;
+        margin: 10px auto;
+    }
+    
+    .menu {
+        display: block;
+        text-align: center;
+    }
+    .menu ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 18px;
+        text-align: center;
+    }
+    .container {
         padding: 10px;
     }
-
-    .text-content {
-        font-size: 0.9rem;
-    }
-
-    .image-content img {
-        max-width: 300px;
-    }
-
-    #projetos h2 {
-        font-size: 1.5rem;
+    .button {
+        width: 100%;
     }
 }
